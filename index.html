@@ -1,315 +1,856 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>知识弹药库 · 孟菲斯风（邮件版）</title>
-  <meta name="description" content="唐潘的知识弹药库，将飞书收藏的文章、研究资料与实践经验整理为可检索、可复用的精读内容。">
-  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>知识弹药库 · 飞书收藏全量精读 | TP Space</title>
+  <meta name="description" content="唐潘的知识弹药库，将飞书收藏的文章、研究资料与实践经验整理为可检索、可复用的精读内容，涵盖工作流、模型选型、产品设计与第二大脑。">
   <link rel="canonical" href="https://eightonefive.tpgofighting.top/">
-  <meta property="og:title" content="知识弹药库 · 飞书收藏全量精读">
-  <meta property="og:description" content="唐潘的知识弹药库，将飞书收藏的文章、研究资料与实践经验整理为可检索、可复用的精读内容。">
+  <meta property="og:title" content="知识弹药库 · 飞书收藏全量精读 | TP Space">
+  <meta property="og:description" content="唐潘的知识弹药库：38 篇飞书深度收藏，3 维度筛选，30+ 落地技能。">
   <meta property="og:url" content="https://eightonefive.tpgofighting.top/">
-  <meta name="twitter:card" content="summary">
-  <script type="application/ld+json" data-tp-seo-jsonld>{"@context":"https://schema.org","@type":"WebSite","name":"知识弹药库 · 飞书收藏全量精读","url":"https://eightonefive.tpgofighting.top/","description":"唐潘的知识弹药库，将飞书收藏的文章、研究资料与实践经验整理为可检索、可复用的精读内容。","inLanguage":"zh-CN","publisher":{"@type":"Person","name":"唐潘","alternateName":"Tyler Tang","url":"https://tpgofighting.top/"}}</script>
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  
+  <script type="application/ld+json" data-tp-seo-jsonld>
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "知识弹药库 · 飞书收藏全量精读",
+    "url": "https://eightonefive.tpgofighting.top/",
+    "description": "唐潘的知识弹药库，将飞书收藏的文章、研究资料与实践经验整理为可检索、可复用的精读内容。",
+    "inLanguage": "zh-CN",
+    "publisher": {
+      "@type": "Person",
+      "name": "唐潘",
+      "alternateName": "Tyler Tang",
+      "url": "https://tpgofighting.top/"
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg-canvas: #fbfaf6;
+      --bg-card: #ffffff;
+      --border-main: #181b22;
+      --border-subtle: rgba(24, 27, 34, 0.12);
+      --shadow-pop: 4px 4px 0px #181b22;
+      --shadow-pop-sm: 2px 2px 0px #181b22;
+      --shadow-pop-lg: 6px 6px 0px #181b22;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-pill: 9999px;
+      
+      --accent-yellow: #f59e0b;
+      --accent-yellow-light: #fef3c7;
+      --accent-lime: #d9ef7f;
+      --accent-lime-light: #f4fae1;
+      --accent-blue: #2563eb;
+      --accent-blue-light: #eff6ff;
+      --accent-red: #ef4444;
+      --accent-red-light: #fef2f2;
+      --accent-pink: #ec4899;
+      
+      --text-title: #111318;
+      --text-body: #374151;
+      --text-muted: #6b7280;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      background-image: 
+        linear-gradient(rgba(20, 24, 33, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(20, 24, 33, 0.045) 1px, transparent 1px);
+      background-size: 24px 24px;
+      color: var(--text-body);
+      font-family: 'Plus Jakarta Sans', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Top Sticky Header */
+    .tp-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(251, 250, 246, 0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 2px solid var(--border-main);
+    }
+
+    .header-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-title);
+    }
+
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      background: var(--accent-yellow);
+      border: 2px solid var(--border-main);
+      border-radius: var(--radius-sm);
+      font-weight: 900;
+      font-size: 15px;
+      color: var(--border-main);
+      box-shadow: 2px 2px 0px var(--border-main);
+    }
+
+    .brand-title {
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: var(--accent-lime);
+      border: 1.5px solid var(--border-main);
+      padding: 1px 7px;
+      border-radius: var(--radius-pill);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-tp {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-title);
+      background: #ffffff;
+      border: 2px solid var(--border-main);
+      border-radius: var(--radius-pill);
+      box-shadow: var(--shadow-pop-sm);
+      text-decoration: none;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+
+    .btn-tp:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: var(--shadow-pop);
+      background: var(--accent-yellow-light);
+    }
+
+    /* Page Container */
+    .page-wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 32px 20px 60px;
+    }
+
+    /* Hero Section */
+    .hero-card {
+      background: #ffffff;
+      border: 2px solid var(--border-main);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-pop);
+      padding: 32px;
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 28px;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 720px) {
+      .hero-card {
+        grid-template-columns: 1fr;
+        padding: 24px;
+      }
+      .hero-ill {
+        display: none;
+      }
+    }
+
+    .kicker-tag {
+      display: inline-block;
+      background: var(--accent-yellow);
+      border: 2px solid var(--border-main);
+      box-shadow: 2px 2px 0px var(--border-main);
+      padding: 3px 12px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      border-radius: 6px;
+      color: var(--border-main);
+      margin-bottom: 14px;
+    }
+
+    .hero-title {
+      font-size: clamp(1.8rem, 4vw, 2.3rem);
+      font-weight: 900;
+      line-height: 1.22;
+      color: var(--text-title);
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+
+    .hero-title span {
+      background: var(--accent-lime);
+      padding: 1px 6px;
+      border: 1.5px solid var(--border-main);
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    .hero-desc {
+      font-size: 0.98rem;
+      color: var(--text-body);
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    .hero-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .hero-ill img {
+      width: 100%;
+      height: auto;
+      max-height: 190px;
+      object-fit: contain;
+      filter: drop-shadow(2px 2px 0px rgba(24,27,34,0.15));
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+
+    @media (max-width: 640px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .stat-box {
+      background: #ffffff;
+      border: 2px solid var(--border-main);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-pop);
+      padding: 16px 14px;
+      text-align: center;
+      transition: transform 0.15s ease;
+    }
+
+    .stat-box:hover {
+      transform: translateY(-2px);
+    }
+
+    .stat-num {
+      font-size: 1.9rem;
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .stat-box.c-yellow .stat-num { color: var(--accent-yellow); }
+    .stat-box.c-blue .stat-num { color: var(--accent-blue); }
+    .stat-box.c-green .stat-num { color: #10b981; }
+    .stat-box.c-pink .stat-num { color: var(--accent-pink); }
+
+    /* Quick Anchor Nav */
+    .anchor-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 36px;
+    }
+
+    .anchor-chip {
+      background: #ffffff;
+      border: 1.5px solid var(--border-main);
+      box-shadow: 2px 2px 0px var(--border-main);
+      border-radius: var(--radius-pill);
+      padding: 5px 12px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-title);
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+
+    .anchor-chip:hover {
+      background: var(--accent-yellow-light);
+      transform: translateY(-1px);
+    }
+
+    /* Section Headers */
+    .section-block {
+      margin-bottom: 40px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .sec-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 10px;
+      background: #ffffff;
+      border: 2px solid var(--border-main);
+      box-shadow: 2px 2px 0px var(--border-main);
+      border-radius: 8px;
+      font-weight: 900;
+      font-size: 0.95rem;
+      color: var(--border-main);
+    }
+
+    .sec-title {
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: var(--text-title);
+      letter-spacing: -0.02em;
+    }
+
+    /* Card List */
+    .card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .neo-card {
+      background: #ffffff;
+      border: 2px solid var(--border-main);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-pop);
+      padding: 22px 24px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .neo-card:hover {
+      transform: translate(-1px, -2px);
+      box-shadow: var(--shadow-pop-lg);
+    }
+
+    .neo-card.highlight {
+      border-left: 6px solid var(--accent-yellow);
+    }
+
+    .neo-card.warn {
+      background: var(--accent-red-light);
+      border-color: var(--accent-red);
+      box-shadow: 4px 4px 0px var(--accent-red);
+    }
+
+    .card-kicker-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .badge-pill {
+      display: inline-block;
+      padding: 2px 8px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      border-radius: 4px;
+      border: 1.5px solid var(--border-main);
+      background: var(--accent-yellow);
+      color: var(--border-main);
+    }
+
+    .card-h3 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text-title);
+      margin-bottom: 6px;
+      line-height: 1.35;
+    }
+
+    .card-source {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .card-text {
+      font-size: 0.92rem;
+      color: var(--text-body);
+      line-height: 1.7;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 14px;
+    }
+
+    .tag-chip {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1.5px solid var(--border-main);
+      color: var(--text-title);
+    }
+
+    .tag-blue { background: var(--accent-blue-light); color: var(--accent-blue); border-color: var(--accent-blue); }
+    .tag-yellow { background: var(--accent-yellow-light); color: #b45309; border-color: var(--accent-yellow); }
+    .tag-lime { background: var(--accent-lime-light); color: #3f6212; border-color: #84cc16; }
+    .tag-dark { background: var(--border-main); color: #ffffff; }
+
+    /* Skills Wall */
+    .skills-wall {
+      background: #ffffff;
+      border: 2px solid var(--border-main);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-pop);
+      padding: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 12px;
+      border: 1.5px solid var(--border-main);
+      border-radius: var(--radius-pill);
+      font-size: 0.8rem;
+      font-weight: 700;
+      box-shadow: 2px 2px 0px var(--border-main);
+      transition: transform 0.12s ease;
+      cursor: default;
+    }
+
+    .skill-pill:hover {
+      transform: scale(1.04);
+    }
+
+    /* Footer */
+    .tpspace-footer {
+      border-top: 2px solid var(--border-main);
+      background: #ffffff;
+      padding: 28px 20px;
+      margin-top: 60px;
+    }
+
+    .footer-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-copy {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+  </style>
 </head>
-<body style="margin:0;padding:0;background-color:#FDF6E3;">
-<!-- 外层容器 -->
-<table width="100%" cellpadding="0" cellspacing="0" style="background-color:#FDF6E3;font-family:-apple-system,'PingFang SC','Microsoft YaHei',Arial,sans-serif;">
-<tr><td align="center" style="padding:20px 10px 40px 10px;">
+<body>
 
-<!-- 主容器 -->
-<table width="640" cellpadding="0" cellspacing="0" style="max-width:640px;width:100%;">
+  <!-- Top Sticky Navigation -->
+  <header class="tp-header">
+    <div class="header-inner">
+      <a href="https://tpgofighting.top/" class="brand-group" title="前往 TP Space 个人门户">
+        <span class="brand-badge">TP</span>
+        <div>
+          <span class="brand-title">TP Space · 知识弹药库</span>
+          <span class="brand-tag">飞书全量精读</span>
+        </div>
+      </a>
+      <div class="header-actions">
+        <a href="https://tpgofighting.top/" class="btn-tp" target="_blank" rel="noopener">
+          <span>← 返回 TP Space</span>
+        </a>
+      </div>
+    </div>
+  </header>
 
-  <!-- ===== HERO ===== -->
-  <tr>
-    <td style="border:3px solid #111111;background-color:#FDF6E3;padding:30px 26px;">
-      <table width="100%" cellpadding="0" cellspacing="0"><tr>
-        <td>
-          <span style="display:inline-block;background-color:#FFD400;border:3px solid #111111;padding:4px 14px;font-family:Courier,monospace;font-weight:bold;font-size:13px;color:#111111;">TP × OBSIDIAN × 38 篇</span>
-          <h1 style="font-size:36px;font-weight:900;color:#111111;margin:16px 0 10px 0;line-height:1.2;letter-spacing:-1px;">知识弹药库<br><span style="background-color:#FFD400;padding:0 4px;">一次榨干</span> ✦ 飞书收藏全量精读</h1>
-          <p style="font-size:15px;color:#333333;margin:0 0 12px 0;line-height:1.7;">把 38 篇收藏笔记，按「你的档案 / 你的工作流 / 你每天的工作」三个维度筛过一遍，剩下的都是能直接上手的。</p>
-          <p style="font-family:Courier,monospace;font-size:12px;color:#666666;margin:0;">生成：2026-08-15 ｜ 提炼：DeepSeek ｜ 排版：孟菲斯·邮件兼容版</p>
-        </td>
-      </tr></table>
-    </td>
-  </tr>
+  <main class="page-wrap">
+    <!-- Hero Card -->
+    <section class="hero-card">
+      <div>
+        <div class="kicker-tag font-mono">TP × OBSIDIAN × 38 篇精读</div>
+        <h1 class="hero-title">知识弹药库<br><span>全量精读</span> ✦ 架构与实战</h1>
+        <p class="hero-desc">把 38 篇飞书收藏笔记，按「底层档案 / 工具链路 / 研发实战」三个维度彻底筛过一遍，沉淀出能即刻调用的 AI 弹药与工程技巧。</p>
+        <p class="hero-meta font-mono">提炼：DeepSeek ｜ 编排：Antigravity ｜ 排版：TP Space Neo-Brutalist</p>
+      </div>
+      <div class="hero-ill">
+        <img src="assets/ill_second_brain.svg" alt="Second Brain Illustration" width="200" height="170">
+      </div>
+    </section>
 
-  <!-- ===== STATS ===== -->
-  <tr><td style="padding:18px 0 6px 0;">
-    <table width="100%" cellpadding="0" cellspacing="0"><tr>
-      <td width="25%" style="padding:0 7px 0 0;"><table width="100%" cellpadding="0" cellspacing="0"><tr><td style="background-color:#FF5252;border:3px solid #111111;padding:12px 8px;text-align:center;">
-        <div style="font-size:32px;font-weight:900;color:#FFFFFF;font-family:Courier,monospace;">38</div>
-        <div style="font-size:12px;font-weight:bold;color:#FFFFFF;">篇笔记精读</div>
-      </td></tr></table></td>
-      <td width="25%" style="padding:0 7px 0 0;"><table width="100%" cellpadding="0" cellspacing="0"><tr><td style="background-color:#FFD400;border:3px solid #111111;padding:12px 8px;text-align:center;">
-        <div style="font-size:32px;font-weight:900;color:#111111;font-family:Courier,monospace;">6</div>
-        <div style="font-size:12px;font-weight:bold;color:#111111;">大主题聚类</div>
-      </td></tr></table></td>
-      <td width="25%" style="padding:0 7px 0 0;"><table width="100%" cellpadding="0" cellspacing="0"><tr><td style="background-color:#3D5AFE;border:3px solid #111111;padding:12px 8px;text-align:center;">
-        <div style="font-size:32px;font-weight:900;color:#FFFFFF;font-family:Courier,monospace;">30+</div>
-        <div style="font-size:12px;font-weight:bold;color:#FFFFFF;">可上手技能</div>
-      </td></tr></table></td>
-      <td width="25%"><table width="100%" cellpadding="0" cellspacing="0"><tr><td style="background-color:#00C853;border:3px solid #111111;padding:12px 8px;text-align:center;">
-        <div style="font-size:32px;font-weight:900;color:#FFFFFF;font-family:Courier,monospace;">3</div>
-        <div style="font-size:12px;font-weight:bold;color:#FFFFFF;">画像维度筛选</div>
-      </td></tr></table></td>
-    </tr></table>
-  </td></tr>
+    <!-- Stats Grid -->
+    <section class="stats-grid">
+      <div class="stat-box c-yellow">
+        <div class="stat-num font-mono">38</div>
+        <div class="stat-label">篇笔记精读</div>
+      </div>
+      <div class="stat-box c-blue">
+        <div class="stat-num font-mono">6</div>
+        <div class="stat-label">大核心主题</div>
+      </div>
+      <div class="stat-box c-green">
+        <div class="stat-num font-mono">30+</div>
+        <div class="stat-label">条落地技能</div>
+      </div>
+      <div class="stat-box c-pink">
+        <div class="stat-num font-mono">3</div>
+        <div class="stat-label">画像维度筛选</div>
+      </div>
+    </section>
 
-  <!-- ===== 00 最该先看 ===== -->
-  <tr><td style="padding:28px 0 4px 0;">
-    <table width="100%" cellpadding="0" cellspacing="0"><tr>
-      <td><span style="font-family:Courier,monospace;font-weight:900;font-size:18px;border:3px solid #111111;padding:4px 10px;background-color:#FFFFFF;color:#111111;">00</span>
-      <span style="font-size:24px;font-weight:900;color:#111111;margin-left:10px;">最该先看 · 与你高度相关</span></td>
-      <td align="right"><span style="display:inline-block;background-color:#FFD400;border:2px solid #111111;padding:2px 8px;font-family:Courier,monospace;font-size:12px;font-weight:bold;">TOP PICK</span></td>
-    </tr></table>
-  </td></tr>
+    <!-- Anchor Jump Links -->
+    <nav class="anchor-nav" aria-label="目录锚点">
+      <a href="#sec-00" class="anchor-chip">★ 00 必读</a>
+      <a href="#sec-01" class="anchor-chip">01 工作流升级</a>
+      <a href="#sec-02" class="anchor-chip">02 成本与选型</a>
+      <a href="#sec-03" class="anchor-chip">03 产品与设计</a>
+      <a href="#sec-04" class="anchor-chip">04 第二大脑</a>
+      <a href="#sec-05" class="anchor-chip">05 视野雷达</a>
+      <a href="#sec-06" class="anchor-chip">06 避坑提醒</a>
+      <a href="#sec-07" class="anchor-chip">07 技能墙</a>
+    </nav>
 
-  <!-- 卡片 1 -->
-  <tr><td style="padding:10px 0;">
-    <table width="100%" cellpadding="0" cellspacing="0"><tr>
-      <td style="border:3px solid #111111;border-bottom:6px solid #111111;border-right:6px solid #111111;background-color:#FFFFFF;padding:18px 20px;">
-        <span style="display:inline-block;background-color:#FFD400;border:2px solid #111111;padding:2px 8px;font-family:Courier,monospace;font-size:11px;font-weight:bold;">★ 必读</span>
-        <h3 style="font-size:17px;font-weight:800;color:#111111;margin:8px 0;">① 模型选型新斩杀线：DeepSeek V4 Pro vs Grok 4.6</h3>
-        <p style="font-family:Courier,monospace;font-size:11px;color:#666666;margin:0 0 8px 0;">《一夜之间…推入新斩杀线》+《首发实战测评》</p>
-        <p style="font-size:14px;color:#222222;line-height:1.7;margin:0;">你每天跑 Hermes/Claude Code，选型就是省钱。V4 Pro 缓存命中价低至 0.0036$/M token（命中率 99%），Terminal Bench 87.9 逼近 Claude Fable 5；但<b>前端生成明显弱</b>——做网站用 Claude，跑后端/异步任务用 V4 Pro。Grok 4.6 适合实时交互。</p>
-        <p style="margin:10px 0 0 0;"><span style="display:inline-block;background-color:#3D5AFE;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;font-size:12px;font-weight:bold;">实时交互选 Grok 4.6</span> <span style="display:inline-block;background-color:#FFD400;border:2px solid #111111;padding:3px 10px;font-size:12px;font-weight:bold;">异步自动化选 V4 Pro</span> <span style="display:inline-block;background-color:#00C853;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;font-size:12px;font-weight:bold;">缓存命中降本 99%</span></p>
-      </td>
-    </tr></table>
-  </td></tr>
+    <!-- 00 最该先看 -->
+    <section class="section-block" id="sec-00">
+      <div class="section-head">
+        <span class="sec-badge font-mono">00</span>
+        <h2 class="sec-title">最该先看 · 与当前阶段高度相关</h2>
+      </div>
+      <div class="card-list">
+        <article class="neo-card highlight">
+          <div class="card-kicker-row">
+            <span class="badge-pill">★ TOP PICK</span>
+            <span class="font-mono text-xs text-muted">模型评测</span>
+          </div>
+          <h3 class="card-h3">① 模型选型新斩杀线：DeepSeek V4 Pro vs Grok 4.6</h3>
+          <p class="card-source font-mono">《一夜之间…推入新斩杀线》+《首发实战测评》</p>
+          <p class="card-text">日常跑 Hermes / Claude Code，选型就是省钱。V4 Pro 缓存命中价低至 0.0036$/M token（命中率 99%），Terminal Bench 87.9 逼近 Claude Fable 5；但前端生成明显偏弱——写页面组件用 Claude，跑后端与异步任务用 V4 Pro。Grok 4.6 则适合高响应实时交互。</p>
+          <div class="tag-row">
+            <span class="tag-chip tag-blue">实时交互选 Grok 4.6</span>
+            <span class="tag-chip tag-yellow">异步自动化选 V4 Pro</span>
+            <span class="tag-chip tag-lime">缓存命中降本 99%</span>
+          </div>
+        </article>
 
-  <!-- 卡片 2 -->
-  <tr><td style="padding:10px 0;">
-    <table width="100%" cellpadding="0" cellspacing="0"><tr>
-      <td style="border:3px solid #111111;border-bottom:6px solid #111111;border-right:6px solid #111111;background-color:#FFFFFF;padding:18px 20px;">
-        <span style="display:inline-block;background-color:#FFD400;border:2px solid #111111;padding:2px 8px;font-family:Courier,monospace;font-size:11px;font-weight:bold;">★ 必读</span>
-        <h3 style="font-size:17px;font-weight:800;color:#111111;margin:8px 0;">② Claude/Codex 跨会话传消息：重构你的多 Agent 工作流</h3>
-        <p style="font-family:Courier,monospace;font-size:11px;color:#666666;margin:0 0 8px 0;">《Claude_Codex能跨会话传消息》+《推理档位就是一句提示词》</p>
-        <p style="font-size:14px;color:#222222;line-height:1.7;margin:0;">你同时用 Claude Code + Antigravity + Hermes，项目级 CLAUDE.md 自动加载 + 跨会话上下文传递能砍掉大量重复沟通。推理档位用中间档（medium）是性价比甜点——别再无脑 max 烧钱。</p>
-        <p style="margin:10px 0 0 0;"><span style="display:inline-block;background-color:#3D5AFE;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;font-size:12px;font-weight:bold;">项目级 CLAUDE.md</span> <span style="display:inline-block;background-color:#FFD400;border:2px solid #111111;padding:3px 10px;font-size:12px;font-weight:bold;">跨会话传上下文</span> <span style="display:inline-block;background-color:#00C853;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;font-size:12px;font-weight:bold;">推理档位用 medium</span></p>
-      </td>
-    </tr></table>
-  </td></tr>
+        <article class="neo-card highlight">
+          <div class="card-kicker-row">
+            <span class="badge-pill">★ TOP PICK</span>
+            <span class="font-mono text-xs text-muted">多 Agent 协作</span>
+          </div>
+          <h3 class="card-h3">② Claude/Codex 跨会话传消息：重构多 Agent 工作流</h3>
+          <p class="card-source font-mono">《Claude_Codex能跨会话传消息》+《推理档位就是一句提示词》</p>
+          <p class="card-text">同时使用 Claude Code + Antigravity + Hermes 时，项目级 CLAUDE.md 自动加载配合跨会话上下文传递能砍掉大量重复沟通。推理档位切换至中间档（medium）是最佳性价比甜点，避免全局无脑 max 烧钱。</p>
+          <div class="tag-row">
+            <span class="tag-chip tag-blue">项目级 CLAUDE.md</span>
+            <span class="tag-chip tag-yellow">跨会话传上下文</span>
+            <span class="tag-chip tag-lime">推理档位用 medium</span>
+          </div>
+        </article>
 
-  <!-- 卡片 3 -->
-  <tr><td style="padding:10px 0;">
-    <table width="100%" cellpadding="0" cellspacing="0"><tr>
-      <td style="border:3px solid #111111;border-bottom:6px solid #111111;border-right:6px solid #111111;background-color:#FFFFFF;padding:18px 20px;">
-        <span style="display:inline-block;background-color:#FFD400;border:2px solid #111111;padding:2px 8px;font-family:Courier,monospace;font-size:11px;font-weight:bold;">★ 必读</span>
-        <h3 style="font-size:17px;font-weight:800;color:#111111;margin:8px 0;">③ 省 token 的 Skills 是「约束工具」不是「省钱工具」</h3>
-        <p style="font-family:Courier,monospace;font-size:11px;color:#666666;margin:0 0 8px 0;">《赶在DeepSeek涨价前，我猛烧1千测了6个省token的Skills》</p>
-        <p style="font-size:14px;color:#222222;line-height:1.7;margin:0;">实测结论：简单任务省 token（Ponytail/Headroom 可日常用），复杂任务反而 +33%~222% 成本（thinking token 膨胀）。你 8GB 小内存 Mac + DeepSeek 计费，这个坑必须避开。</p>
-        <p style="margin:10px 0 0 0;"><span style="display:inline-block;background-color:#3D5AFE;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;font-size:12px;font-weight:bold;">简单任务用省token Skill</span> <span style="display:inline-block;background-color:#FFD400;border:2px solid #111111;padding:3px 10px;font-size:12px;font-weight:bold;">复杂任务别乱加约束</span> <span style="display:inline-block;background-color:#00C853;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;font-size:12px;font-weight:bold;">监控 thinking token 占比</span></p>
-      </td>
-    </tr></table>
-  </td></tr>
+        <article class="neo-card highlight">
+          <div class="card-kicker-row">
+            <span class="badge-pill">★ TOP PICK</span>
+            <span class="font-mono text-xs text-muted">Token 优化</span>
+          </div>
+          <h3 class="card-h3">③ 省 token 的 Skills 是「约束工具」并非简单「省钱」</h3>
+          <p class="card-source font-mono">《赶在DeepSeek涨价前，我猛烧1千测了6个省token的Skills》</p>
+          <p class="card-text">实测结论：简单任务下使用 Ponytail / Headroom 能稳定节省 token；但在复杂逻辑任务中，强加约束反而会导致 thinking token 异常膨胀（成本增长 33%~222%）。在 8GB 内存设备与自付 Token 账单下必须分场景使用。</p>
+          <div class="tag-row">
+            <span class="tag-chip tag-blue">简单任务用省token Skill</span>
+            <span class="tag-chip tag-yellow">复杂任务避免过度约束</span>
+            <span class="tag-chip tag-lime">监控 thinking token 占比</span>
+          </div>
+        </article>
+      </div>
+    </section>
 
-  <!-- ===== 01 工作流升级 ===== -->
-  <tr><td style="padding:28px 0 4px 0;">
-    <span style="font-family:Courier,monospace;font-weight:900;font-size:18px;border:3px solid #111111;padding:4px 10px;background-color:#FFFFFF;color:#111111;">01</span>
-    <span style="font-size:24px;font-weight:900;color:#111111;margin-left:10px;">工作流升级 · 让 Agent 军团干活更猛</span>
-  </td></tr>
+    <!-- 01 工作流升级 -->
+    <section class="section-block" id="sec-01">
+      <div class="section-head">
+        <span class="sec-badge font-mono">01</span>
+        <h2 class="sec-title">工作流升级 · 让 Agent 军团干活更猛</h2>
+      </div>
+      <div class="card-list">
+        <article class="neo-card">
+          <h3 class="card-h3">Graph Engineering：别再堆单纯的 Loop 了</h3>
+          <p class="card-source font-mono">《Loop Engineering 已死？》</p>
+          <p class="card-text">单纯 Loop 循环易带来上下文腐烂、错误级联与工具过载三宗罪。Graph 四要素：节点、边、状态、策略。每日知识笔记清洗、网页自动化部署等高频且流程固定的任务推荐 Graph 化；低频探索则保持轻量 Loop 规避过度设计。</p>
+          <div class="tag-row">
+            <span class="tag-chip tag-blue">asyncio 扇出扇入</span>
+            <span class="tag-chip tag-yellow">验证器节点</span>
+            <span class="tag-chip tag-lime">高频 Graph · 低频 Loop</span>
+          </div>
+        </article>
 
-  <tr><td style="padding:10px 0;">
-    <table width="100%" cellpadding="0" cellspacing="0"><tr>
-      <td style="border:3px solid #111111;border-bottom:6px solid #3D5AFE;border-right:6px solid #3D5AFE;background-color:#FFFFFF;padding:18px 20px;">
-        <h3 style="font-size:17px;font-weight:800;color:#111111;margin:0 0 4px 0;">Graph Engineering：别再堆 Loop 了</h3>
-        <p style="font-family:Courier,monospace;font-size:11px;color:#666666;margin:0 0 8px 0;">《Loop Engineering 已死？》</p>
-        <p style="font-size:14px;color:#222222;line-height:1.7;margin:0;">Loop 有上下文腐烂/错误级联/工具过载三宗罪。Graph 四要素：节点、边、状态、策略。你的每日知识笔记、网页部署这些高频任务值得 Graph 化；低频任务保持简单 Loop 防过度设计。</p>
-        <p style="margin:10px 0 0 0;"><span style="display:inline-block;background-color:#3D5AFE;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;font-size:12px;font-weight:bold;">asyncio 扇出扇入</span> <span style="display:inline-block;background-color:#FFD400;border:2px solid #111111;padding:3px 10px;font-size:12px;font-weight:bold;">验证器节点</span> <span style="display:inline-block;background-color:#00C853;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;font-size:12px;font-weight:bold;">高频 Graph · 低频 Loop</span></p>
-      </td>
-    </tr></table>
-  </td></tr>
+        <article class="neo-card">
+          <h3 class="card-h3">i-have-adhd：让 AI 先说重点（1.8 万星）</h3>
+          <p class="card-source font-mono">《一个 Skill.md 拿下 1.8 万星》</p>
+          <p class="card-text">严格执行「先结论 → 再步骤 → 后行动」三步走，抹除废话铺垫。直接装配进 Claude Code / Codex / AGENTS.md，在多 Agent 协同与高并发阅读场景下大幅度拉升有效信息吞吐量。</p>
+          <div class="tag-row">
+            <span class="tag-chip tag-blue">装进 Claude Code</span>
+            <span class="tag-chip tag-yellow">写入 AGENTS.md</span>
+            <span class="tag-chip tag-lime">提示词模板复用</span>
+          </div>
+        </article>
 
-  <tr><td style="padding:10px 0;">
-    <table width="100%" cellpadding="0" cellspacing="0"><tr>
-      <td style="border:3px solid #111111;border-bottom:6px solid #3D5AFE;border-right:6px solid #3D5AFE;background-color:#FFFFFF;padding:18px 20px;">
-        <h3 style="font-size:17px;font-weight:800;color:#111111;margin:0 0 4px 0;">i-have-adhd：让 AI 先说重点（1.8 万星）</h3>
-        <p style="font-family:Courier,monospace;font-size:11px;color:#666666;margin:0 0 8px 0;">《一个 Skill.md 拿下 1.8 万星》</p>
-        <p style="font-size:14px;color:#222222;line-height:1.7;margin:0;">先结论 → 再步骤 → 后行动，删废话。可直接集成到你的 Claude Code / Codex / AGENTS.md，多 Agent 协作时信息密度直接拉满。</p>
-        <p style="margin:10px 0 0 0;"><span style="display:inline-block;background-color:#3D5AFE;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;font-size:12px;font-weight:bold;">装进 Claude Code</span> <span style="display:inline-block;background-color:#FFD400;border:2px solid #111111;padding:3px 10px;font-size:12px;font-weight:bold;">写入 AGENTS.md</span> <span style="display:inline-block;background-color:#00C853;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;font-size:12px;font-weight:bold;">提示词模板复用</span></p>
-      </td>
-    </tr></table>
-  </td></tr>
+        <article class="neo-card">
+          <h3 class="card-h3">DeepSeek Harness：一切皆插件 + BrowserAct 爬虫</h3>
+          <p class="card-source font-mono">《Harness 上线》+《速通》+《Cordis 论文》+《BrowserAct Skill》</p>
+          <p class="card-text">插件热插拔 + PTC 模式（代码生成替代死板工具调用）+ 自我改造机制。配合 BrowserAct 的 stealth-extract 直接提取正文，有效提升对防爬网页的抓取稳定性，替代传统 Web Fetch 的脆弱环节。</p>
+          <div class="tag-row">
+            <span class="tag-chip tag-blue">npx dsh web 体验</span>
+            <span class="tag-chip tag-yellow">stealth-extract 抓正文</span>
+            <span class="tag-chip tag-lime">工具调用加 undo</span>
+          </div>
+        </article>
+      </div>
+    </section>
 
-  <tr><td style="padding:10px 0;">
-    <table width="100%" cellpadding="0" cellspacing="0"><tr>
-      <td style="border:3px solid #111111;border-bottom:6px solid #3D5AFE;border-right:6px solid #3D5AFE;background-color:#FFFFFF;padding:18px 20px;">
-        <h3 style="font-size:17px;font-weight:800;color:#111111;margin:0 0 4px 0;">DeepSeek Harness：一切皆插件 + BrowserAct 爬虫</h3>
-        <p style="font-family:Courier,monospace;font-size:11px;color:#666666;margin:0 0 8px 0;">《Harness 上线》+《速通》+《Cordis 论文》+《BrowserAct Skill》</p>
-        <p style="font-size:14px;color:#222222;line-height:1.7;margin:0;">插件热插拔 + PTC 模式（代码生成替代工具调用）+ 创造模式（Agent 自我改造）。BrowserAct 的 stealth-extract 直提正文、Stealth 浏览器反爬——你天天抓公众号/小红书，这套能替代 Web Fetch 的脆弱环节。</p>
-        <p style="margin:10px 0 0 0;"><span style="display:inline-block;background-color:#3D5AFE;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;font-size:12px;font-weight:bold;">npx dsh web 体验</span> <span style="display:inline-block;background-color:#FFD400;border:2px solid #111111;padding:3px 10px;font-size:12px;font-weight:bold;">stealth-extract 抓正文</span> <span style="display:inline-block;background-color:#00C853;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;font-size:12px;font-weight:bold;">工具调用加 undo</span></p>
-      </td>
-    </tr></table>
-  </td></tr>
+    <!-- 02 成本与选型 -->
+    <section class="section-block" id="sec-02">
+      <div class="section-head">
+        <span class="sec-badge font-mono">02</span>
+        <h2 class="sec-title">成本与选型 · 每一分 Token 花在刀刃上</h2>
+      </div>
+      <div class="card-list">
+        <article class="neo-card">
+          <h3 class="card-h3">AI 中转站江湖：低价 API 的暗面</h3>
+          <p class="card-source font-mono">《起底 AI 中转站江湖》</p>
+          <p class="card-text">订阅拆分、模型偷换、数据转售——成本虽可压至官方 1/10，但伴随封号、合规及日志泄露隐患。在重要工程与代码开发中，需掌握模型指纹（CISPA）辨识技术确保模型保真度。</p>
+          <div class="tag-row">
+            <span class="tag-chip tag-yellow">模型指纹测试（CISPA）</span>
+            <span class="tag-chip tag-blue">E=M÷R 成本公式</span>
+          </div>
+        </article>
 
-  <!-- ===== 02 成本与选型 ===== -->
-  <tr><td style="padding:28px 0 4px 0;">
-    <span style="font-family:Courier,monospace;font-weight:900;font-size:18px;border:3px solid #111111;padding:4px 10px;background-color:#FFFFFF;color:#111111;">02</span>
-    <span style="font-size:24px;font-weight:900;color:#111111;margin-left:10px;">成本与选型 · 每一分 token 花在刀刃上</span>
-  </td></tr>
+        <article class="neo-card">
+          <h3 class="card-h3">网络基础课：你每天都在踩的坑</h3>
+          <p class="card-source font-mono">《小白也能懂的「梯子」底层原理》</p>
+          <p class="card-text">拆解 GFW 行为画像、协议探测以及 DNS 污染机制。多云环境下采用 Tailscale 构建私有内网互联，并合理配置 Clash 分流规则，避免节点混用导致海外 AI 账号被风控封锁。</p>
+          <div class="tag-row">
+            <span class="tag-chip tag-blue">Tailscale 组网</span>
+            <span class="tag-chip tag-yellow">Clash 分流规则</span>
+            <span class="tag-chip tag-lime">DNS 防污染</span>
+          </div>
+        </article>
+      </div>
+    </section>
 
-  <tr><td style="padding:10px 0;">
-    <table width="100%" cellpadding="0" cellspacing="0"><tr>
-      <td style="border:3px solid #111111;border-bottom:6px solid #FFD400;border-right:6px solid #FFD400;background-color:#FFFFFF;padding:18px 20px;">
-        <h3 style="font-size:17px;font-weight:800;color:#111111;margin:0 0 4px 0;">AI 中转站江湖：低价 API 的暗面</h3>
-        <p style="font-family:Courier,monospace;font-size:11px;color:#666666;margin:0 0 8px 0;">《起底 AI 中转站江湖》</p>
-        <p style="font-size:14px;color:#222222;line-height:1.7;margin:0;">订阅拆分、模型偷换、数据转售——成本能压到官方 1/10，但封号/法律/数据安全全在黑箱。你重度依赖 Claude Code，识别真假模型是保命技能。</p>
-        <p style="margin:10px 0 0 0;"><span style="display:inline-block;background-color:#FF5252;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;font-size:12px;font-weight:bold;">模型指纹测试（CISPA）</span> <span style="display:inline-block;background-color:#FFD400;border:2px solid #111111;padding:3px 10px;font-size:12px;font-weight:bold;">E=M÷R 成本公式</span></p>
-      </td>
-    </tr></table>
-  </td></tr>
+    <!-- 03 产品与设计 -->
+    <section class="section-block" id="sec-03">
+      <div class="section-head">
+        <span class="sec-badge font-mono">03</span>
+        <h2 class="sec-title">产品与设计 · 从痛点出发快速成型</h2>
+      </div>
+      <div class="card-list">
+        <article class="neo-card">
+          <h3 class="card-h3">Vibe Coding 灵感方法论：从真实痛点出发</h3>
+          <p class="card-source font-mono">《Vibe Coding 没灵感？》</p>
+          <p class="card-text">做独立产品不要空想：从自己的真实痛点出发（如课表、考勤打卡、知识归档），或每周扫描 Product Hunt 与各平台高赞求助帖。用最小闭环（MVP）上线检验，用完即走，拒绝无用臃肿特性。</p>
+          <div class="tag-row">
+            <span class="tag-chip tag-yellow">Product Hunt 周扫</span>
+            <span class="tag-chip tag-lime">痛点就是新需求</span>
+            <span class="tag-chip tag-blue">极速 MVP 上线</span>
+          </div>
+        </article>
 
-  <tr><td style="padding:10px 0;">
-    <table width="100%" cellpadding="0" cellspacing="0"><tr>
-      <td style="border:3px solid #111111;border-bottom:6px solid #FFD400;border-right:6px solid #FFD400;background-color:#FFFFFF;padding:18px 20px;">
-        <h3 style="font-size:17px;font-weight:800;color:#111111;margin:0 0 4px 0;">网络基础课：你每天都在踩的坑</h3>
-        <p style="font-family:Courier,monospace;font-size:11px;color:#666666;margin:0 0 8px 0;">《AI时代需要补的网络基础知识》+《Clash Verge 零基础教程》</p>
-        <p style="font-size:14px;color:#222222;line-height:1.7;margin:0;">Tailscale/ZeroTier 组网、端口映射 + DDNS（你的 tpgofighting.top 部署）、NAT/CGNAT 与代理封号原理——Clash 规则里把微信/飞书设直连防封，AI 工具走代理。</p>
-        <p style="margin:10px 0 0 0;"><span style="display:inline-block;background-color:#3D5AFE;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;font-size:12px;font-weight:bold;">Tailscale 远程访问</span> <span style="display:inline-block;background-color:#FFD400;border:2px solid #111111;padding:3px 10px;font-size:12px;font-weight:bold;">Clash 分流：微信直连</span></p>
-      </td>
-    </tr></table>
-  </td></tr>
+        <article class="neo-card">
+          <h3 class="card-h3">Beautiful UI：AI 原生产品的组件库 + 设计高级感 11 条</h3>
+          <p class="card-source font-mono">《Beautiful UI 组件库》+《做有高级感的产品：11 个细节》</p>
+          <p class="card-text">白嫖优秀开源 UI 组件库（如 Neo-brutalism、Bento 网格、坐标纸纹理）。拒绝千篇一律的 AI 渐变紫套路，建立自己的品牌色（TP 黄、青柠绿）与 IP 插画视觉护城河，辅以细腻微动效拉开质感差距。</p>
+          <div class="tag-row">
+            <span class="tag-chip tag-blue">Beautiful UI 资产库</span>
+            <span class="tag-chip tag-yellow">IP 插画做品牌护城河</span>
+            <span class="tag-chip tag-lime">设计检查清单 11 条</span>
+          </div>
+        </article>
+      </div>
+    </section>
 
-  <!-- ===== 03 产品与设计 ===== -->
-  <tr><td style="padding:28px 0 4px 0;">
-    <span style="font-family:Courier,monospace;font-weight:900;font-size:18px;border:3px solid #111111;padding:4px 10px;background-color:#FFFFFF;color:#111111;">03</span>
-    <span style="font-size:24px;font-weight:900;color:#111111;margin-left:10px;">产品与设计 · 你的 Vibe Coding 弹药</span>
-  </td></tr>
+    <!-- 04 第二大脑 -->
+    <section class="section-block" id="sec-04">
+      <div class="section-head">
+        <span class="sec-badge font-mono">04</span>
+        <h2 class="sec-title">第二大脑 · 构建高信噪比个人知识库</h2>
+      </div>
+      <div class="card-list">
+        <article class="neo-card">
+          <h3 class="card-h3">OKF：Agent 时代的「HTML 时刻」+ 企业级 RAG 架构</h3>
+          <p class="card-source font-mono">《OKF 开源框架》+《一文读懂企业 RAG 搭建》</p>
+          <p class="card-text">用 OKF 范式组织 Obsidian：把散乱的 Markdown 结构化为可供 Agent 高保真调用的知识节点。结合 LlamaParse 复杂图表切片与 FAISS + BM25 混合检索 + Reranker 重排，打造毫秒级召回的第二大脑底座。</p>
+          <div class="tag-row">
+            <span class="tag-chip tag-blue">OKF 组织 Obsidian</span>
+            <span class="tag-chip tag-yellow">LlamaParse 解析</span>
+            <span class="tag-chip tag-lime">FAISS+BM25 混合检索</span>
+          </div>
+        </article>
+      </div>
+    </section>
 
-  <tr><td style="padding:10px 0;">
-    <table width="100%" cellpadding="0" cellspacing="0"><tr>
-      <td style="border:3px solid #111111;border-bottom:6px solid #FF6B9D;border-right:6px solid #FF6B9D;background-color:#FFFFFF;padding:18px 20px;">
-        <h3 style="font-size:17px;font-weight:800;color:#111111;margin:0 0 4px 0;">Vibe Coding 灵感方法论：从痛点出发</h3>
-        <p style="font-family:Courier,monospace;font-size:11px;color:#666666;margin:0 0 8px 0;">《Vibe Coding 怎么获取灵感？》+《AI产品合集（Product Hunt）》</p>
-        <p style="font-size:14px;color:#222222;line-height:1.7;margin:0;">先解决自己的小痛点（点云处理、多 Agent 协作），再用 Museon CLI 跨平台调研（小红书/X）验证。Product Hunt 的 AI 分类是你的灵感雷达。</p>
-        <p style="margin:10px 0 0 0;"><span style="display:inline-block;background-color:#3D5AFE;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;font-size:12px;font-weight:bold;">Museon CLI 调研</span> <span style="display:inline-block;background-color:#FF6B9D;border:2px solid #111111;padding:3px 10px;font-size:12px;font-weight:bold;">自身痛点出发</span></p>
-      </td>
-    </tr></table>
-  </td></tr>
+    <!-- 05 视野雷达 -->
+    <section class="section-block" id="sec-05">
+      <div class="section-head">
+        <span class="sec-badge font-mono">05</span>
+        <h2 class="sec-title">视野雷达 · 关注关键技术范式跃迁</h2>
+      </div>
+      <div class="card-list">
+        <article class="neo-card">
+          <h3 class="card-h3">Luna-TTS 语音变天 · GPT-6 军备竞赛 · 宇树百亿 · 数据中心重工业化</h3>
+          <p class="card-source font-mono">趋势前沿文章合辑</p>
+          <p class="card-text">Luna-TTS 用「扩散架构替代自回归」登顶，其架构思路同样可借鉴并迁移至 3D 点云生成领域；模型训练正在演化为电力与基础设施的大型重工业，算力边缘化趋势明显；宇树等全栈自研推动具身智能与 3D 点云感知深度交汇。</p>
+          <div class="tag-row">
+            <span class="tag-chip tag-blue">扩散架构迁移 3D 点云</span>
+            <span class="tag-chip tag-lime">点云 × 具身智能</span>
+            <span class="tag-chip tag-yellow">基础设施演进</span>
+          </div>
+        </article>
+      </div>
+    </section>
 
-  <tr><td style="padding:10px 0;">
-    <table width="100%" cellpadding="0" cellspacing="0"><tr>
-      <td style="border:3px solid #111111;border-bottom:6px solid #FF6B9D;border-right:6px solid #FF6B9D;background-color:#FFFFFF;padding:18px 20px;">
-        <h3 style="font-size:17px;font-weight:800;color:#111111;margin:0 0 4px 0;">Beautiful UI：AI 原生产品的组件库 + 设计高级感 11 条</h3>
-        <p style="font-family:Courier,monospace;font-size:11px;color:#666666;margin:0 0 8px 0;">《Beautiful UI 19 类组件》+《设计高级感 11 条清单》</p>
-        <p style="font-size:14px;color:#222222;line-height:1.7;margin:0;">流式回答、工具调用状态、审批流程——AI 场景组件直接复制。建一份自己的设计检查表，tpgofighting.top 每次迭代都过一遍。</p>
-        <p style="margin:10px 0 0 0;"><span style="display:inline-block;background-color:#FF6B9D;border:2px solid #111111;padding:3px 10px;font-size:12px;font-weight:bold;">beautifului.dev 白嫖</span> <span style="display:inline-block;background-color:#FFD400;border:2px solid #111111;padding:3px 10px;font-size:12px;font-weight:bold;">建个人设计检查清单</span></p>
-      </td>
-    </tr></table>
-  </td></tr>
+    <!-- 06 避坑提醒 -->
+    <section class="section-block" id="sec-06">
+      <div class="section-head">
+        <span class="sec-badge font-mono">06</span>
+        <h2 class="sec-title">避坑清单 · 关键警醒</h2>
+      </div>
+      <div class="card-list">
+        <article class="neo-card warn">
+          <h3 class="card-h3" style="color: var(--accent-red);">⚠ AI 写代码你看不懂：能力提升还是失控？</h3>
+          <p class="card-text">务必让 AI 解释生成代码的核心控制流并沉淀到架构文档中；在重要模块强制设立「人工验收检查点」；AI 代码生成后手动重构一个小切口，验证自身对系统掌控力。</p>
+        </article>
 
-  <!-- ===== 04 第二大脑 ===== -->
-  <tr><td style="padding:28px 0 4px 0;">
-    <span style="font-family:Courier,monospace;font-weight:900;font-size:18px;border:3px solid #111111;padding:4px 10px;background-color:#FFFFFF;color:#111111;">04</span>
-    <span style="font-size:24px;font-weight:900;color:#111111;margin-left:10px;">第二大脑升级 · Obsidian 永动机</span>
-  </td></tr>
+        <article class="neo-card warn">
+          <h3 class="card-h3" style="color: var(--accent-red);">⚠ 赚钱方式塑造人：防异化 + 英语别死磕课本</h3>
+          <p class="card-text">定期自问「这个功能服务真实用户还是盲目追逐虚荣指标？」，维护初衷清单。英语学习采用「可理解性输入（Comprehensible Input）」：选取理解度 70% 左右的硬核技术原版材料，与自身研究方向深度绑定。</p>
+        </article>
+      </div>
+    </section>
 
-  <tr><td style="padding:10px 0;">
-    <table width="100%" cellpadding="0" cellspacing="0"><tr>
-      <td style="border:3px solid #111111;border-bottom:6px solid #00C853;border-right:6px solid #00C853;background-color:#FFFFFF;padding:18px 20px;">
-        <h3 style="font-size:17px;font-weight:800;color:#111111;margin:0 0 4px 0;">OKF：Agent 时代的「HTML 时刻」+ 企业 RAG</h3>
-        <p style="font-family:Courier,monospace;font-size:11px;color:#666666;margin:0 0 8px 0;">《知识标准 OKF》+《重新理解企业 RAG》</p>
-        <p style="font-size:14px;color:#222222;line-height:1.7;margin:0;">OKF：Markdown + YAML 元数据 + index.md + log.md，让 Agent 直接读你的第二大脑。RAG 本质是知识工程：文档解析（LlamaParse）+ 混合检索（FAISS + BM25 + Reranker）是最被低估的两条流水线。</p>
-        <p style="margin:10px 0 0 0;"><span style="display:inline-block;background-color:#00C853;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;font-size:12px;font-weight:bold;">笔记加 YAML 元数据</span> <span style="display:inline-block;background-color:#3D5AFE;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;font-size:12px;font-weight:bold;">FAISS+BM25+Reranker</span></p>
-      </td>
-    </tr></table>
-  </td></tr>
+    <!-- 07 技能墙 -->
+    <section class="section-block" id="sec-07">
+      <div class="section-head">
+        <span class="sec-badge font-mono">07</span>
+        <h2 class="sec-title">技能墙 · 30+ 条可直接上手的行动点</h2>
+      </div>
+      <div class="skills-wall">
+        <span class="skill-pill" style="background:#eff6ff; color:#2563eb;">Claude Code 装 i-have-adhd</span>
+        <span class="skill-pill" style="background:#f4fae1; color:#3f6212;">项目级 CLAUDE.md</span>
+        <span class="skill-pill" style="background:#fef3c7; color:#b45309;">推理档位 medium</span>
+        <span class="skill-pill" style="background:#fdf2f8; color:#be185d;">Museon CLI 调研</span>
+        <span class="skill-pill" style="background:#fef2f2; color:#b91c1c;">模型指纹测试</span>
+        <span class="skill-pill" style="background:#eff6ff; color:#2563eb;">Tailscale 组网</span>
+        <span class="skill-pill" style="background:#fef3c7; color:#b45309;">Clash 分流防封号</span>
+        <span class="skill-pill" style="background:#f4fae1; color:#3f6212;">OKF 组织 Obsidian</span>
+        <span class="skill-pill" style="background:#fdf2f8; color:#be185d;">Beautiful UI 资产</span>
+        <span class="skill-pill" style="background:#eff6ff; color:#2563eb;">LlamaParse 解析</span>
+        <span class="skill-pill" style="background:#fef3c7; color:#b45309;">FAISS+BM25+Reranker</span>
+        <span class="skill-pill" style="background:#f4fae1; color:#3f6212;">截图+OCR 自动归档</span>
+        <span class="skill-pill" style="background:#fef2f2; color:#b91c1c;">thinking token 监控</span>
+        <span class="skill-pill" style="background:#eff6ff; color:#2563eb;">npx dsh web 体验</span>
+        <span class="skill-pill" style="background:#fef3c7; color:#b45309;">PTC 模式省 token</span>
+        <span class="skill-pill" style="background:#f4fae1; color:#3f6212;">工具调用加 undo</span>
+        <span class="skill-pill" style="background:#fdf2f8; color:#be185d;">BrowserAct 抓正文</span>
+        <span class="skill-pill" style="background:#eff6ff; color:#2563eb;">黑话扩展调研</span>
+        <span class="skill-pill" style="background:#fef3c7; color:#b45309;">Product Hunt 周扫</span>
+        <span class="skill-pill" style="background:#f4fae1; color:#3f6212;">可理解性输入学英语</span>
+        <span class="skill-pill" style="background:#fdf2f8; color:#be185d;">IP 插画做品牌</span>
+        <span class="skill-pill" style="background:#eff6ff; color:#2563eb;">asyncio 扇出扇入</span>
+        <span class="skill-pill" style="background:#fef3c7; color:#b45309;">验证器节点</span>
+        <span class="skill-pill" style="background:#f4fae1; color:#3f6212;">3D 扩散替代 AR</span>
+        <span class="skill-pill" style="background:#fef2f2; color:#b91c1c;">省token Skill 分场景</span>
+        <span class="skill-pill" style="background:#eff6ff; color:#2563eb;">GRPO 强化学习</span>
+        <span class="skill-pill" style="background:#f4fae1; color:#3f6212;">点云 × 具身智能</span>
+        <span class="skill-pill" style="background:#fef3c7; color:#b45309;">设计检查清单</span>
+        <span class="skill-pill" style="background:#fdf2f8; color:#be185d;">E=M÷R 成本公式</span>
+      </div>
+    </section>
+  </main>
 
-  <!-- ===== 05 视野雷达 ===== -->
-  <tr><td style="padding:28px 0 4px 0;">
-    <span style="font-family:Courier,monospace;font-weight:900;font-size:18px;border:3px solid #111111;padding:4px 10px;background-color:#FFFFFF;color:#111111;">05</span>
-    <span style="font-size:24px;font-weight:900;color:#111111;margin-left:10px;">视野雷达 · 别错过的大趋势</span>
-  </td></tr>
+  <!-- Unified Footer -->
+  <footer class="tpspace-footer">
+    <div class="footer-inner">
+      <div>
+        <div style="font-weight: 800; color: var(--text-title); font-size: 0.95rem; margin-bottom: 4px;">
+          TP SPACE<sup style="font-size: 0.65rem; color: var(--accent-yellow);">®</sup> · 唐潘作品门户
+        </div>
+        <p class="footer-copy font-mono">© 2026 Tyler Tang (唐潘) · 保留所有权利 ｜ 38 篇飞书收藏全量精读</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://tpgofighting.top/" class="btn-tp" target="_blank" rel="noopener">TP Space 主站</a>
+        <a href="https://github.com/TPGoFighting" class="btn-tp" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
 
-  <tr><td style="padding:10px 0;">
-    <table width="100%" cellpadding="0" cellspacing="0"><tr>
-      <td style="border:3px solid #111111;border-bottom:6px solid #3D5AFE;border-right:6px solid #3D5AFE;background-color:#FFFFFF;padding:18px 20px;">
-        <h3 style="font-size:17px;font-weight:800;color:#111111;margin:0 0 4px 0;">Luna-TTS 语音变天 · GPT-6 军备竞赛 · 宇树百亿 · 数据中心重工业化</h3>
-        <p style="font-family:Courier,monospace;font-size:11px;color:#666666;margin:0 0 8px 0;">四篇趋势文合辑</p>
-        <p style="font-size:14px;color:#222222;line-height:1.7;margin:0;">Luna-TTS 用「扩散替代自回归」登顶——架构思路可迁移到你的 3D 点云生成。GPT-6 十万亿参数 + GW 数据中心 = AI 从代码卷到水电煤，你的 3D 视觉可以往数字孪生靠。宇树全栈自研 + 低价策略，点云 × 具身智能是下一个风口。</p>
-        <p style="margin:10px 0 0 0;"><span style="display:inline-block;background-color:#3D5AFE;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;font-size:12px;font-weight:bold;">扩散架构迁移 3D 生成</span> <span style="display:inline-block;background-color:#00C853;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;font-size:12px;font-weight:bold;">点云 × 具身智能</span></p>
-      </td>
-    </tr></table>
-  </td></tr>
-
-  <!-- ===== 06 避坑 ===== -->
-  <tr><td style="padding:28px 0 4px 0;">
-    <span style="font-family:Courier,monospace;font-weight:900;font-size:18px;border:3px solid #111111;padding:4px 10px;background-color:#FFFFFF;color:#111111;">06</span>
-    <span style="font-size:24px;font-weight:900;color:#111111;margin-left:10px;">避坑清单 · 三个提醒</span>
-  </td></tr>
-
-  <tr><td style="padding:10px 0;">
-    <table width="100%" cellpadding="0" cellspacing="0"><tr>
-      <td style="border:3px solid #FF5252;border-bottom:6px solid #FF5252;border-right:6px solid #FF5252;background-color:#FFF5F5;padding:18px 20px;">
-        <p style="font-size:15px;font-weight:900;color:#FF5252;margin:0 0 8px 0;">⚠ AI 写代码你看不懂：能力提升还是失控？</p>
-        <p style="font-size:14px;color:#333333;line-height:1.7;margin:0;">让 AI 解释生成代码的关键逻辑并记进 Obsidian；每个模块设「理解检查点」；AI 生成后手动重构一个小功能检验掌控力。</p>
-      </td>
-    </tr></table>
-  </td></tr>
-
-  <tr><td style="padding:10px 0;">
-    <table width="100%" cellpadding="0" cellspacing="0"><tr>
-      <td style="border:3px solid #FF5252;border-bottom:6px solid #FF5252;border-right:6px solid #FF5252;background-color:#FFF5F5;padding:18px 20px;">
-        <p style="font-size:15px;font-weight:900;color:#FF5252;margin:0 0 8px 0;">⚠ 赚钱方式塑造人：防异化 + 英语别死磕课本</p>
-        <p style="font-size:14px;color:#333333;line-height:1.7;margin:0;">定期自问「这个功能服务用户还是服务指标？」，Obsidian 建初衷清单。英语用「可理解性输入」：选能懂 70% 的兴趣内容大量输入，把 3D 视觉/AI 兴趣和英语学习绑定。</p>
-      </td>
-    </tr></table>
-  </td></tr>
-
-  <!-- ===== 07 技能墙 ===== -->
-  <tr><td style="padding:28px 0 4px 0;">
-    <span style="font-family:Courier,monospace;font-weight:900;font-size:18px;border:3px solid #111111;padding:4px 10px;background-color:#FFFFFF;color:#111111;">07</span>
-    <span style="font-size:24px;font-weight:900;color:#111111;margin-left:10px;">技能墙 · 30+ 条可直接上手</span>
-  </td></tr>
-
-  <tr><td style="padding:10px 0;">
-    <table width="100%" cellpadding="0" cellspacing="0"><tr>
-      <td style="border:3px solid #111111;border-bottom:6px solid #FFD400;border-right:6px solid #FFD400;background-color:#FFFFFF;padding:16px 18px;">
-        <p style="margin:2px 0;font-size:13px;">
-          <span style="display:inline-block;background-color:#3D5AFE;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;margin:3px;font-weight:bold;">Claude Code 装 i-have-adhd</span>
-          <span style="display:inline-block;background-color:#00C853;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;margin:3px;font-weight:bold;">项目级 CLAUDE.md</span>
-          <span style="display:inline-block;background-color:#FFD400;border:2px solid #111111;padding:3px 10px;margin:3px;font-weight:bold;">推理档位 medium</span>
-          <span style="display:inline-block;background-color:#FF6B9D;border:2px solid #111111;padding:3px 10px;margin:3px;font-weight:bold;">Museon CLI 调研</span>
-          <span style="display:inline-block;background-color:#FF5252;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;margin:3px;font-weight:bold;">模型指纹测试</span>
-          <span style="display:inline-block;background-color:#3D5AFE;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;margin:3px;font-weight:bold;">Tailscale 组网</span>
-          <span style="display:inline-block;background-color:#FFD400;border:2px solid #111111;padding:3px 10px;margin:3px;font-weight:bold;">Clash 分流防封号</span>
-          <span style="display:inline-block;background-color:#00C853;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;margin:3px;font-weight:bold;">OKF 组织 Obsidian</span>
-          <span style="display:inline-block;background-color:#FF6B9D;border:2px solid #111111;padding:3px 10px;margin:3px;font-weight:bold;">Beautiful UI 白嫖</span>
-          <span style="display:inline-block;background-color:#3D5AFE;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;margin:3px;font-weight:bold;">LlamaParse 解析</span>
-          <span style="display:inline-block;background-color:#FFD400;border:2px solid #111111;padding:3px 10px;margin:3px;font-weight:bold;">FAISS+BM25+Reranker</span>
-          <span style="display:inline-block;background-color:#00C853;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;margin:3px;font-weight:bold;">截图+OCR 自动归档</span>
-          <span style="display:inline-block;background-color:#FF5252;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;margin:3px;font-weight:bold;">thinking token 监控</span>
-          <span style="display:inline-block;background-color:#3D5AFE;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;margin:3px;font-weight:bold;">npx dsh web 体验</span>
-          <span style="display:inline-block;background-color:#FFD400;border:2px solid #111111;padding:3px 10px;margin:3px;font-weight:bold;">PTC 模式省 token</span>
-          <span style="display:inline-block;background-color:#00C853;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;margin:3px;font-weight:bold;">工具调用加 undo</span>
-          <span style="display:inline-block;background-color:#FF6B9D;border:2px solid #111111;padding:3px 10px;margin:3px;font-weight:bold;">BrowserAct 抓正文</span>
-          <span style="display:inline-block;background-color:#3D5AFE;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;margin:3px;font-weight:bold;">黑话扩展调研</span>
-          <span style="display:inline-block;background-color:#FFD400;border:2px solid #111111;padding:3px 10px;margin:3px;font-weight:bold;">Product Hunt 周扫</span>
-          <span style="display:inline-block;background-color:#00C853;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;margin:3px;font-weight:bold;">可理解性输入学英语</span>
-          <span style="display:inline-block;background-color:#FF6B9D;border:2px solid #111111;padding:3px 10px;margin:3px;font-weight:bold;">IP 插画做品牌</span>
-          <span style="display:inline-block;background-color:#3D5AFE;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;margin:3px;font-weight:bold;">asyncio 扇出扇入</span>
-          <span style="display:inline-block;background-color:#FFD400;border:2px solid #111111;padding:3px 10px;margin:3px;font-weight:bold;">验证器节点</span>
-          <span style="display:inline-block;background-color:#00C853;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;margin:3px;font-weight:bold;">3D 扩散替代 AR</span>
-          <span style="display:inline-block;background-color:#FF5252;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;margin:3px;font-weight:bold;">省token Skill 分场景</span>
-          <span style="display:inline-block;background-color:#3D5AFE;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;margin:3px;font-weight:bold;">GRPO 强化学习</span>
-          <span style="display:inline-block;background-color:#00C853;color:#FFFFFF;border:2px solid #111111;padding:3px 10px;margin:3px;font-weight:bold;">点云 × 具身智能</span>
-          <span style="display:inline-block;background-color:#FFD400;border:2px solid #111111;padding:3px 10px;margin:3px;font-weight:bold;">设计检查清单</span>
-          <span style="display:inline-block;background-color:#FF6B9D;border:2px solid #111111;padding:3px 10px;margin:3px;font-weight:bold;">E=M÷R 成本公式</span>
-        </p>
-      </td>
-    </tr></table>
-  </td></tr>
-
-  <!-- ===== FOOTER ===== -->
-  <tr><td style="padding:24px 0 0 0;text-align:center;">
-    <span style="display:inline-block;background-color:#FFD400;border:3px solid #111111;padding:6px 16px;font-family:Courier,monospace;font-weight:bold;font-size:13px;">🐟 小鱼手作 · 孟菲斯风 · 仅此一次</span>
-    <p style="font-family:Courier,monospace;font-size:12px;color:#666666;margin:12px 0 0 0;">TP × Hermes × Obsidian ｜ 2026-08-15 ｜ 38 篇飞书收藏 · 3 维度筛选 · 30+ 技能</p>
-  </td></tr>
-
-</table>
-</td></tr></table>
-<section data-tp-seo-context aria-label="本站简介" style="max-width:70ch;margin:2rem auto 1rem;padding:0 1rem;color:#6b7280;font-size:.72rem;line-height:1.6;opacity:.62;text-align:center"><p style="margin:0">知识弹药库 · 飞书收藏全量精读：唐潘的知识弹药库，将飞书收藏的文章、研究资料与实践经验整理为可检索、可复用的精读内容。</p></section>
+  <section data-tp-seo-context aria-label="本站简介" style="max-width:70ch;margin:2rem auto 1rem;padding:0 1rem;color:#6b7280;font-size:.72rem;line-height:1.6;opacity:.62;text-align:center">
+    <p style="margin:0">知识弹药库 · 飞书收藏全量精读：唐潘的知识弹药库，将飞书收藏的文章、研究资料与实践经验整理为可检索、可复用的精读内容。</p>
+  </section>
+  <script src="https://tpgofighting.top/assets/tp-canvas-bg.js" defer></script>
 </body>
 </html>
